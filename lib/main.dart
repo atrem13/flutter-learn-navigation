@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const CustomNav());
+void main() => runApp(MaterialApp(
+        title: 'Demo Named Route',
+        initialRoute: '/secondPage',
+        routes: {
+          '/firstPage': (context) => FirstPage(),
+          '/secondPage': (context) => SecondPage(),
+        }));
 
 class CustomNav extends StatelessWidget {
   const CustomNav({Key? key}) : super(key: key);
@@ -78,9 +84,7 @@ class FirstPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return SecondPage();
-            }));
+            Navigator.pushNamed(context, '/secondPage');
           },
           child: Text('Lets Go...'),
         ),
@@ -101,7 +105,7 @@ class SecondPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/firstPage');
           },
           child: Text('Go Back...'),
         ),
