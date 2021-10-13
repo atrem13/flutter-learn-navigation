@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+void main() => runApp(MaterialApp(
+      title: 'Learn Route',
+      initialRoute: '/thirdPage',
       routes: {
+        // '/firstPage': (context) => FirstPage(),
+        // '/secondPage': (context) => SecondPage(),
         '/thirdPage': (context) => ThirdPage(),
         ExtractScreenArguments.routeName: (context) => ExtractScreenArguments(),
       },
@@ -29,11 +26,113 @@ class MyApp extends StatelessWidget {
         assert(false, 'Need to give required variable');
         return null;
       },
-      title: 'Navigation with Arguments',
-      home: ThirdPage(),
-    );
-  }
-}
+    ));
+
+// class CustomNav extends StatelessWidget {
+//   const CustomNav({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Transition Demo',
+//       home: ThirdPage(),
+//     );
+//   }
+// }
+
+// class MainScreen extends StatelessWidget {
+//   const MainScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Main Page'),
+//       ),
+//       body: GestureDetector(
+//         onTap: () {
+//           Navigator.push(context, MaterialPageRoute(builder: (context) {
+//             return DetailScreen();
+//           }));
+//         },
+//         child: Hero(
+//           tag: 'imageHero',
+//           child: Image.network(
+//             'https://picsum.photos/250?image=9',
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class DetailScreen extends StatelessWidget {
+//   const DetailScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Main Page'),
+//       ),
+//       body: GestureDetector(
+//         onTap: () {
+//           Navigator.pop(context);
+//         },
+//         child: Center(
+//           child: Hero(
+//             tag: 'imageHero',
+//             child: Image.network(
+//               'https://picsum.photos/250?image=9',
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class FirstPage extends StatelessWidget {
+//   const FirstPage({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('First Page'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             Navigator.pushNamed(context, '/secondPage');
+//           },
+//           child: Text('Lets Go...'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class SecondPage extends StatelessWidget {
+//   const SecondPage({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Second Page'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             Navigator.pushNamed(context, '/firstPage');
+//           },
+//           child: Text('Go Back...'),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class ThirdPage extends StatelessWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -71,7 +170,7 @@ class ThirdPage extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Pass data from pass argument'),
+              child: Text('Pass data from argument manually'),
             ),
           ],
         ),
