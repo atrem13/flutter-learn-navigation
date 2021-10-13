@@ -9,7 +9,7 @@ class CustomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Transition Demo',
-      home: MainScreen(),
+      home: FirstPage(),
     );
   }
 }
@@ -60,6 +60,50 @@ class DetailScreen extends StatelessWidget {
               'https://picsum.photos/250?image=9',
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Page'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return SecondPage();
+            }));
+          },
+          child: Text('Lets Go...'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Page'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go Back...'),
         ),
       ),
     );
